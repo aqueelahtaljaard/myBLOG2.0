@@ -1,0 +1,15 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#backimg{
+  background-image: url("public/images/arobic.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}

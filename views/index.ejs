@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  </head>
+  <body>
+    <ul class="nav nav-pills">
+      <li><img src="images/logo.jpg"></li>
+      <li role="presentation" class="active"><a href="/">Home</a></li>
+      <li role="presentation"><a href="posts">Archived</a></li>
+      <li role="presentation"><a href="new">Post</a></li>
+      <button type="submit" class="btn btn-default navbar-btn"><a href="/login"> SIGN OUT</a></button>
+    </ul>
+
+
+        <div class="jumbotron" id="background">
+          <p>THE BODY WILL ACHIEVE WHAT THE MIND BELIEVES</p>
+        </div>
+
+
+
+
+    <div class="container">
+      <div class="row">
+
+        <h1>MOST RECENT:</h1>
+      </div>
+
+
+      <div class="row">
+        <% if (posts.length !=0) { %>
+          <% posts.forEach(function(post){ %>
+            <div class="col-xs-12 col-md-6 col-lg-4">
+              <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                  <h3 class="panel-title"><%= post.title %></h3>
+                  <h3 class="panel-title"><%= post.datetime %></h3>
+                </div>
+
+                <div class="panel-body">
+                <img class="image" src="<%= post.image %>" alt="">
+                </div>
+
+                <div class="panel-body">
+                  <%- post.briefcontent %>
+                </div>
+
+                <div class="panel-footer">
+                  <p><%= post.author %></p>
+                  <a href="/view/<%= post.id %>"><button type="button" name="button"> Read more</button></a>
+                  <a href="/edit/<%= post.id %>"> <button type="button" name="button">Edit</button></a>
+              <button onclick="deletePost()" type="button" name="button"> Delete</button>
+
+              <script type="text/javascript">
+              function deletePost(){
+                var alert = confirm("Are you sure you would like to delete this post?");
+                if (alert == true){
+                  window.location.href = "http://localhost:3000/delete/<%= post.id%>";
+                }
+              }
+
+              </script>
+
+
+
+                </div>
+            </div>
+
+        </div>
+        <% }); %>
+
+        <%  } else{ %>
+          <p>You have no blog posts</p>
+        <% } %>
+      </div>
+    </div>
+
+    <div id="footer" class="footer">
+                <h3>Copyright <span>&#9746;</span> 2017 PRIVACY POLICY</h3>
+                <div id="footer_icons">
+                    <!-- This is the follow us section with links -->
+                    <h3>Follow Us :</h3>
+                    <a href="#" target="_blank" ><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank" ><i class="fab fa-twitter-square"></i></a>
+                    <a href="#" target="_blank" ><i class="fab fa-instagram"></i></a>
+
+                    
+
+                </div>
+            </div>
+
+
+  </body>
+</html>
